@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = models => {
-    models.User.hasMany(models.Example);
+    models.User.hasMany(models.Thread);
+    models.User.hasMany(models.Post);
   };
 
   // Creating a custom method for our User model.

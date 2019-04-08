@@ -3,9 +3,13 @@ module.exports = (sequelize, DataTypes) => {
         title: {
             type: DataTypes.STRING,
             allowNull: false,
-        }
+        }    
     });
 
+    Thread.associate = models => {
+        models.Thread.hasMany(models.Post);
+      }; 
+         
     return Thread;
   };
   

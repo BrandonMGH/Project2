@@ -2,15 +2,12 @@ module.exports = (sequelize, DataTypes) => {
     const Topic = sequelize.define("Topic", {
       
     });
-  
-    // Example.associate = function(models) {
-    //   models.Example.belongsTo(models.User, {
-    //     onDelete: "CASCADE",
-    //     foreignKey: {
-    //       allowNull: false
-    //     }
-    //   });
-    // };
+    
+    Topic.associate = models => {
+      models.Topic.hasMany(models.Thread);
+      models.Topic.hasMany(models.Post);
+    };
+
     return Topic;
   };
-  
+
