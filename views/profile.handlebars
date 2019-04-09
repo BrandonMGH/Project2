@@ -5,7 +5,7 @@
 </div>
 
 <div class="row mt-4">
-  <div href="#" class="col-sm-4">
+  <div class="col-sm-4">
     <div class="card border-dark" style="width: 18rem;">
       {{!-- <div class="card-body"> --}}
       <img src="/images/github.png" class="mx-auto mt-3 mb-2 d-block">
@@ -15,17 +15,17 @@
     </div>
   </div>
 
-  <div href="#" class="col-sm-4">
+  <div class="col-sm-4">
     <div class="card border-dark" style="width: 18rem;">
       {{!-- <div class="card-body"> --}}
       <img src="/images/bootstrap.png" class="mx-auto mt-3 mb-2 d-block">
       <h5 class="card-title text-center">Bootstrap</h5>
-      <button type="button" id=class="btn btn-dark btn-lg btn-block topics">Take me to the topic</button>
+      <button type="button" class="btn btn-dark btn-lg btn-block topics">Take me to the topic</button>
       {{!-- </div> --}}
     </div>
   </div>
 
-  <div href="#" class="col-sm-4">
+  <div class="col-sm-4">
     <div class="card border-dark" style="width: 18rem;">
       {{!-- <div class="card-body"> --}}
       <img src="#" alt="Node.js" class="mx-auto mt-3 mb-2 d-block">
@@ -48,7 +48,7 @@
     </div>
   </div>
 
-  <div href="#" class="col-sm-4">
+  <div class="col-sm-4">
     <div class="card border-dark" style="width: 18rem;">
       {{!-- <div class="card-body"> --}}
       <img src="/images/mysql.png" class="mx-auto mt-3 mb-2 d-block">
@@ -58,7 +58,7 @@
     </div>
   </div>
 
-  <div href="#" class="col-sm-4">
+  <div class="col-sm-4">
     <div class="card border-dark" style="width: 18rem;">
       {{!-- <div class="card-body"> --}}
       <img src="/images/javascript.png" class="mx-auto mt-3 mb-2 d-block">
@@ -71,11 +71,12 @@
 </div>
 
 <script>
-  $(document).on("click", ".topics", function (event) {
+  $(".topics").on("click", function (event) {
     event.preventDefault();
-
     let id = $(this).data("id");
     let query = `topics/${id}`;
+    alert(id);
+    alert(query);
     // Signals back end to make 
     $.ajax(query, {
       method: "GET",
