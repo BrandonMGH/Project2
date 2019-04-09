@@ -76,7 +76,7 @@
 
     let id = $(this).data("id");
     let query = `topics/${id}`;
-
+    // Signals back end to make 
     $.ajax(query, {
       method: "GET",
       data: {
