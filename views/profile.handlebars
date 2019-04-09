@@ -5,31 +5,33 @@
 </div>
 
 <div class="row mt-4">
-  <div href="#" class="col-sm-4">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title text-center">Github</h5>
-        <img src="#">
-        <button type="button" class="btn btn-primary btn-lg btn-block">Take me to the topic</button>
-      </div>
+  <div class="col-sm-4">
+    <div class="card border-dark" style="width: 18rem;">
+      {{!-- <div class="card-body"> --}}
+      <img src="/images/github.png" class="mx-auto mt-3 mb-2 d-block">
+      <h5 class="card-title text-center">Github</h5>
+      <button type="button" data-id="1" class="btn btn-dark btn-lg btn-block topics">Take me to the topic</button>
+      {{!-- </div> --}}
     </div>
   </div>
 
-  <div href="#" class="col-sm-4">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title text-center">Bootstrap</h5>
-        <button type="button" class="btn btn-primary btn-lg btn-block">Take me to the topic</button>
-      </div>
+  <div class="col-sm-4">
+    <div class="card border-dark" style="width: 18rem;">
+      {{!-- <div class="card-body"> --}}
+      <img src="/images/bootstrap.png" class="mx-auto mt-3 mb-2 d-block">
+      <h5 class="card-title text-center">Bootstrap</h5>
+      <button type="button" class="btn btn-dark btn-lg btn-block topics">Take me to the topic</button>
+      {{!-- </div> --}}
     </div>
   </div>
 
-  <div href="#" class="col-sm-4">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title text-center">Express</h5>
-        <button type="button" class="btn btn-primary btn-lg btn-block">Take me to the topic</button>
-      </div>
+  <div class="col-sm-4">
+    <div class="card border-dark" style="width: 18rem;">
+      {{!-- <div class="card-body"> --}}
+      <img src="#" alt="Node.js" class="mx-auto mt-3 mb-2 d-block">
+      <h5 class="card-title text-center">Node.js</h5>
+      <button type="button" class="btn btn-dark btn-lg btn-block topics">Take me to the topic</button>
+      {{!-- </div> --}}
     </div>
   </div>
 
@@ -37,30 +39,55 @@
 
 <div class="row mt-5">
   <div href="#" class="col-sm-4">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title text-center">jQuery</h5>
-        <button type="button" class="btn btn-primary btn-lg btn-block">Take me to the topic</button>
-      </div>
+    <div class="card border-dark" style="width: 18rem;">
+      {{!-- <div class="card-body"> --}}
+      <img src="/images/jquery.png" class="mx-auto mt-3 mb-2 d-block">
+      <h5 class="card-title text-center">jQuery</h5>
+      <button type="button" class="btn btn-dark btn-lg btn-block topics">Take me to the topic</button>
+      {{!-- </div> --}}
     </div>
   </div>
 
-  <div href="#" class="col-sm-4">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title text-center">MySQL</h5>
-        <button type="button" class="btn btn-primary btn-lg btn-block">Take me to the topic</button>
-      </div>
+  <div class="col-sm-4">
+    <div class="card border-dark" style="width: 18rem;">
+      {{!-- <div class="card-body"> --}}
+      <img src="/images/mysql.png" class="mx-auto mt-3 mb-2 d-block">
+      <h5 class="card-title text-center">MySQL</h5>
+      <button type="button" class="btn btn-dark btn-lg btn-block topics">Take me to the topic</button>
+      {{!-- </div> --}}
     </div>
   </div>
 
-  <div href="#" class="col-sm-4">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title text-center">Javascript</h5>
-        <button type="button" class="btn btn-primary btn-lg btn-block">Take me to the topic</button>
-      </div>
+  <div class="col-sm-4">
+    <div class="card border-dark" style="width: 18rem;">
+      {{!-- <div class="card-body"> --}}
+      <img src="/images/javascript.png" class="mx-auto mt-3 mb-2 d-block">
+      <h5 class="card-title text-center">Javascript</h5>
+      <button type="button" class="btn btn-dark btn-lg btn-block topics">Take me to the topic</button>
+      {{!-- </div> --}}
     </div>
   </div>
 
 </div>
+
+<script>
+  $(".topics").on("click", function (event) {
+    event.preventDefault();
+    let id = $(this).data("id");
+    let query = `topics/${id}`;
+    alert(id);
+    alert(query);
+    // Signals back end to make 
+    $.ajax(query, {
+      method: "GET",
+      data: {
+        topic_id: id
+      }
+    }).then(
+      function () {
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+</script>

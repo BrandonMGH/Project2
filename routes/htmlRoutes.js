@@ -13,7 +13,7 @@ module.exports = app => {
       where: {
         id: req.user.id
       },
-      include: [db.Example]
+      // include: [db.Example]
     }).then(dbUser => {
       res.render("profile", { user: dbUser });
     });
