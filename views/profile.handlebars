@@ -1,76 +1,66 @@
-
-<!--THIS IS THE TOPICS PAGE -->
-
-
-<div class="card login_card">
-  <div class="card-body">
-
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>Hello {{user.email}}!</h1>
-
-        <form class="clearfix mb-4" action="POST">
-          
-          <div class="form-group">
-            <h4 class="alert alert-dark" role="alert" for="example-text">Thread Title:</h4>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
-              placeholder="Name your thread here">
-          </div>
-          
-          <div class="form-group">
-            <h4 class="alert alert-dark" role="alert" for="example-description">Post your Thread Below: </h4>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description"
-              placeholder="Post your thread here"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-
-        <h3 class="alert alert-primary" role="alert">Threads</h3>
-        <ul id="example-list" class="list-group">
-          {{#each user.Examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
+<div class="row">
+  <div class="col-8 mt-3">
+    <h1>Hello {{user.email}}!</h1>
   </div>
 </div>
 
-
-<!--THE ORIGINAL PROFILE CODE IS BELOW
- -->
-{{!-- <div class="card login_card">
-  <div class="card-body">
-
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>Hello {{user.email}}!</h1>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
-              placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description"
-              placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>TOPICS</h3>
-        <ul id="example-list" class="list-group">
-          {{#each user.Examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
+<div class="row mt-4">
+  <div href="#" class="col-sm-4">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title text-center">Github</h5>
+        <img src="#">
+        <button type="button" class="btn btn-primary btn-lg btn-block">Take me to the topic</button>
       </div>
     </div>
   </div>
-</div> --}}
+
+  <div href="#" class="col-sm-4">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title text-center">Bootstrap</h5>
+        <button type="button" class="btn btn-primary btn-lg btn-block">Take me to the topic</button>
+      </div>
+    </div>
+  </div>
+
+  <div href="#" class="col-sm-4">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title text-center">Express</h5>
+        <button type="button" class="btn btn-primary btn-lg btn-block">Take me to the topic</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row mt-5">
+  <div href="#" class="col-sm-4">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title text-center">jQuery</h5>
+        <button type="button" class="btn btn-primary btn-lg btn-block">Take me to the topic</button>
+      </div>
+    </div>
+  </div>
+
+  <div href="#" class="col-sm-4">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title text-center">MySQL</h5>
+        <button type="button" class="btn btn-primary btn-lg btn-block">Take me to the topic</button>
+      </div>
+    </div>
+  </div>
+
+  <div href="#" class="col-sm-4">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title text-center">Javascript</h5>
+        <button type="button" class="btn btn-primary btn-lg btn-block">Take me to the topic</button>
+      </div>
+    </div>
+  </div>
+
+</div>
