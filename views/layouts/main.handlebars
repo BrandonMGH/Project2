@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link rel="stylesheet" href="/styles/styles.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Merriweather|Playfair+Display|Roboto+Condensed" rel="stylesheet">
@@ -29,7 +30,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav">
           {{#if user}}
           <li class="nav-item">
             <a class="nav-link" href="/profile">PROFILE</a>
@@ -47,7 +48,10 @@
           {{/unless}}
           {{#if user}}
           <li class="nav-item">
-            <a class="nav-link nav_text" href="/logout">Logout</a>
+            <a class="nav-link nav_text" href="/profile">TOPICS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav_text" href="/logout">LOGOUT</a>
           </li>
           {{/if}}
         </ul>
@@ -80,7 +84,8 @@
     crossorigin="anonymous"></script>
   <script src="/js/index.js"></script>
   <script src="/js/signup.js"></script>
-  <script src="/js/login.js"></script>
+  <script src="/js/login.js"></script> 
+  <script src="/js/threads.js"></script>
   <!-- SCRIPTS -->
   {{!-- <!-- JQuery -->
   

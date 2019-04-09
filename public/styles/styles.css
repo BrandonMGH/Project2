@@ -34,3 +34,14 @@ label {
   font-size: 20px;
   color: #222222;
 }
+
+.btn {
+  border-radius: 0;
+}
+
+.card h5 {
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+}
+
