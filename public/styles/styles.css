@@ -10,7 +10,19 @@ html {
   max-width: 100%;
   height: auto;
 }
+.create_button {
+margin-bottom: 5px;
+font-family: 'Roboto Condensed', sans-serif;
+font-size: 25px;
+}
 
+/* not used, jermaine's suggested css for profile cards */
+.profile_cards
+{
+margin: 5px;
+width: 18rem;
+}
+/* not used, jermaine's suggested css for profile cards */
 .login_card
 {
   background-color: #222222;
@@ -45,3 +57,6 @@ label {
   font-weight: 900;
 }
 
+#create_topic {
+display: none;
+}

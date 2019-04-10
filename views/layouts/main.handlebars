@@ -30,10 +30,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav">
           {{#if user}}
           <li class="nav-item">
-            <a class="nav-link" href="/profile">PROFILE</a>
+            <a class="nav-link nav_text" href="/profile">PROFILE</a>
           </li>
           {{/if}}
         </ul>
@@ -48,7 +48,10 @@
           {{/unless}}
           {{#if user}}
           <li class="nav-item">
-            <a class="nav-link nav_text" href="/logout">Logout</a>
+            <a class="nav-link nav_text" href="/profile">TOPICS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav_text" href="/logout">LOGOUT</a>
           </li>
           {{/if}}
         </ul>
@@ -81,16 +84,10 @@
     crossorigin="anonymous"></script>
   <script src="/js/index.js"></script>
   <script src="/js/signup.js"></script>
-  <script src="/js/login.js"></script>
-  <!-- SCRIPTS -->
-  {{!-- <!-- JQuery -->
-  
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="js/mdb.min.js"></script> --}}
+  <script src="/js/login.js"></script> 
+  <script src="/js/threads.js"></script>
+  <script src="/js/example.js"></script>
+
 </body>
 
 </html>
