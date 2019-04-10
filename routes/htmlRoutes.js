@@ -8,10 +8,7 @@ module.exports = app => {
   app.get("/login", (req, res) => res.render("login"));
 
   // Load threads page
-  app.get("/threads", isAuthenticated, (req, res) => {
-    db.
-    res.render("threads") 
-  })
+  app.get("/threads", isAuthenticated, (req, res) => res.render("threads"));
  
 
   // Load profile page
@@ -25,9 +22,6 @@ module.exports = app => {
       res.render("profile", { user: dbUser });
     });
   });
-
- 
-
 
   // Load example page and pass in an example by id
   app.get("/example/:id", isAuthenticated, (req, res) => {
