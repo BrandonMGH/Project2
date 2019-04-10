@@ -14,7 +14,7 @@ module.exports = app => {
     });
   });
 
-  // Create a new example
+  // Create a new thread
   app.post("/api/examples", isAuthenticated, (req, res) => {
     db.Example.create({
       UserId: req.user.id,
@@ -24,6 +24,25 @@ module.exports = app => {
       res.json(dbExample);
     });
   });
+
+  // Create a new post
+  app.post("/api/post", isAuthenticated, (req, res) => {
+    db.Post.create({
+      title: req.body.title,
+      body: req.body.body
+    }).then(dbPosts => {
+      res.json(dbPosts);
+    });
+  });
+// Get all posts
+app.get("/api/post",  (req, res) => {
+  db.Post
+      .findAll({})
+      .then(dbPost => {
+        console.log(dbPost);
+          res.render("example", {posts: dbPost});
+      });
+});
 
   // Delete an example by id
   app.delete("/api/examples/:id", isAuthenticated, (req, res) => {

@@ -7,6 +7,21 @@ module.exports = app => {
   // Load login page
   app.get("/login", (req, res) => res.render("login"));
 
+  // // Load threads page
+  // app.get("/threads", isAuthenticated, (req, res) => res.render("threads"));
+ 
+    // Load profile page
+    app.get("/threads", (req, res) => {
+      db.User.findOne({
+        where: {
+          id: req.user.id
+        },
+        // include: [db.Example]
+      }).then(dbUser => {
+        res.render("threads", { user: dbUser });
+      });
+    });
+
   // Load profile page
   app.get("/profile", isAuthenticated, (req, res) => {
     db.User.findOne({
@@ -18,18 +33,6 @@ module.exports = app => {
       res.render("profile", { user: dbUser });
     });
   });
-
-  // // Load threads page
-  // app.get("/threads", isAuthenticated, (req, res) => {
-  //   db.User.findOne({
-  //     where: {
-  //       id: req.user.id
-  //     },
-  //     include: [db.Example]
-  //   }).then(dbUser => {
-  //     res.render("threads", { user: dbUser });
-  //   });
-  // });
 
   // Load example page and pass in an example by id
   app.get("/example/:id", isAuthenticated, (req, res) => {
