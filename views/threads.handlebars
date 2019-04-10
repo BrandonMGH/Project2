@@ -3,29 +3,39 @@
 
     <div class="row">
       <div class="col-8 offset-2">
-        {{!-- <h1>Hello {{user.user_name}}!</h1> --}}
+        <!-- Topic Header // will change dynamically #topic_header Just a place holder for now-->
+        <div>
+          <h1 id="topic_header">Topic: <img src="images/github-logo_threads_page.png" width="150px" height="50px"></h1>
+          <hr>
+        </div>
+        <!-- START Button for Creating new Thread Below, when clicked the button will hide and the create_topic_but will show-->
+        <button id="create_topic_but" class="btn btn-block btn-primary create_button">Create a New Thread Here</button>
+        <!-- END Button for Creating new Thread Below, when clicked the button will hide and the create topic will show-->
+        <hr>
+       <div id="create_topic">
+          <form class="clearfix mb-4" action="POST">
 
-        <form class="clearfix mb-4" action="POST">
-          
-          <div class="form-group">
-            <h4 class="alert alert-dark" role="alert" for="thread-title">Thread Title:</h4>
-            <input type="text" id="thread-title" class="form-control" aria-describedby="example-text"
-              placeholder="Name your thread here">
-          </div>
-          
-          <div class="form-group">
-            <h4 class="alert alert-dark" role="alert" for="example-description">Post your Thread Below: </h4>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description"
-              placeholder="Post your thread here"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
+            <div class="form-group">
+              <h4 class="alert alert-dark" role="alert" for="example-text">Thread Title:</h4>
+              <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
+                placeholder="Thread Title">
+            </div>
 
+            <div class="form-group">
+              <h4 class="alert alert-dark" role="alert" for="example-description">Body of the Post: </h4>
+              <textarea class="form-control" id="example-description" aria-describedby="post-body"
+                placeholder="Post Body"></textarea>
+            </div>
+            <button id="submit" class="btn btn-primary float-right">Submit</button>
+          </form>
+        </div>
         <h3 class="alert alert-primary" role="alert">Threads</h3>
         <ul id="example-list" class="list-group">
-          {{#each user.threads}}
+          {{#each user.example-list}}
           <li data-id="{{this.id}}" class="list-group-item">
+            {{!-This link goes to the example (post) page-}}
             <a href="example/{{this.id}}">{{this.text}}</a>
+            {{!-Delete button for deleting thread-}}
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
@@ -35,12 +45,3 @@
   </div>
 </div>
 
-{{!-- BELOW IS THE STARTER CODE FOR LINES 25-32 ABOVE-- }}
-  {{!-- <ul id="example-list" class="list-group">
-          {{#each user.threads}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul> --}}
