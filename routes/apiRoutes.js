@@ -6,6 +6,8 @@ module.exports = app => {
   // Get all examples
 
   app.get("/topic/:TopicId", (req, res) => {
+    console.log("route hit")
+    
     db.Thread.findAll({
       where: { TopicId: req.params.TopicId}
     }).then((data) => {

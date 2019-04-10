@@ -3,7 +3,7 @@
 
     <div class="row">
       <div class="col-8 offset-2">
-        <h1>Hello {{user.email}}!</h1>
+        <h1>Hello {{User.user_name}}</h1>
 
         <form class="clearfix mb-4" action="POST">
           
@@ -23,9 +23,9 @@
 
         <h3 class="alert alert-primary" role="alert">Threads</h3>
         <ul id="example-list" class="list-group">
-          {{#each user.Examples}}
+          {{#each Thread}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
+            <a href="example/{{this.id}}">{{this.title}}</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}

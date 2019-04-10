@@ -31,11 +31,30 @@ module.exports = app => {
   //   });
   // });
 
+  app.get("/threads", (req, res) => {
+    res.render("threads")
+  } )
+
+  app.get("/posts", (req, res) => {
+    res.render("posts")
+  })
+
+  app.get("/threads/:id", (req, res) => {
+    console.log(req.params)
+    db.Thread.findAll({ where: { TopicId: req.params.id } }).then(dbPost => {
+      res.render("threads",{
+        Thread: dbPost
+      });
+    });
+  });
   // Load example page and pass in an example by id
-  app.get("/example/:id", isAuthenticated, (req, res) => {
-    db.Example.findOne({ where: { id: req.params.id } }).then(dbExample => {
-      res.render("example", {
-        example: dbExample
+  app.get("/posts/:id", (req, res) => {
+    console.log(req.params)
+    
+    // db.sequelize.query("SELECT * FROM Posts WHERE id=2").then(users => {console.log(users)})
+    db.Post.findOne({ where: { id: req.params.id } }).then(dbPost => {
+      res.render("posts",{
+        Post: dbPost
       });
     });
   });
