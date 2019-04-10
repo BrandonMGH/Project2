@@ -4,52 +4,17 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = app => {
   // Get all examples
-  app.get("/api/examples", isAuthenticated, (req, res) => {
-    db.Example.findAll({
-      where: {
-        UserId: req.user.id
-      }
-    }).then(dbExamples => {
-      res.json(dbExamples);
-    });
-  });
 
-  // Create a new thread
-  app.post("/api/examples", isAuthenticated, (req, res) => {
-    db.Example.create({
-      UserId: req.user.id,
-      text: req.body.text,
-      description: req.body.description
-    }).then(dbExample => {
-      res.json(dbExample);
-    });
-  });
+  app.get("/topic/:TopicId", (req, res) => {
+    console.log("route hit")
+    
+    db.Thread.findAll({
+      where: { TopicId: req.params.TopicId}
+    }).then((data) => {
+      res.json(data)
+    })
+  }); 
 
-  // Create a new post
-  app.post("/api/post", isAuthenticated, (req, res) => {
-    db.Post.create({
-      title: req.body.title,
-      body: req.body.body
-    }).then(dbPosts => {
-      res.json(dbPosts);
-    });
-  });
-// Get all posts
-app.get("/api/post",  (req, res) => {
-  db.Post
-      .findAll({})
-      .then(dbPost => {
-        console.log(dbPost);
-          res.render("example", {posts: dbPost});
-      });
-});
-
-  // Delete an example by id
-  app.delete("/api/examples/:id", isAuthenticated, (req, res) => {
-    db.Example.destroy({ where: { id: req.params.id } }).then(dbExample => {
-      res.json(dbExample);
-    });
-  });
 
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -80,9 +45,9 @@ app.get("/api/post",  (req, res) => {
       });
   });
 
-  // Route for logging user out
-  app.get("/logout", (req, res) => {
-    req.logout();
-    res.redirect("/");
-  });
+  // // Route for logging user out
+  // app.get("/logout", (req, res) => {
+  //   req.logout();
+  //   res.redirect("/");
+  // });
 };

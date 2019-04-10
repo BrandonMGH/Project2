@@ -31,11 +31,9 @@
         </div>
         <h3 class="alert alert-primary" role="alert">Threads</h3>
         <ul id="example-list" class="list-group">
-          {{#each user.example-list}}
+          {{#each Thread}}
           <li data-id="{{this.id}}" class="list-group-item">
-            {{!-This link goes to the example (post) page-}}
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            {{!-Delete button for deleting thread-}}
+            <a href="example/{{this.id}}">{{this.title}}</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
