@@ -107,23 +107,23 @@ $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
 
-//below is our post onclick event listener / route
-$(".create-post").on("submit", function(event) {
-  // Make sure to preventDefault on a submit event.
-  event.preventDefault();
+// //below is our post onclick event listener / route
+// $(".create-post").on("submit", function(event) {
+//   // Make sure to preventDefault on a submit event.
+//   event.preventDefault();
 
-  var newPost = {
-    body: $("#post-body").val().trim(),
-  };
+//   var newPost = {
+//     body: $("#post-body").val().trim(),
+//   };
 
-  // Send the POST request.
-  $.ajax("/api/Post", {
-    method: "POST",
-    data: newPost
-  }).then(
-    function(res) {
-      console.log(res)
-      location.reload();
-    }
-  );
-});
+//   // Send the POST request.
+//   $.ajax("/api/Post", {
+//     method: "POST",
+//     data: newPost
+//   }).then(
+//     function(res) {
+//       console.log(res)
+//       location.reload();
+//     }
+//   );
+// });

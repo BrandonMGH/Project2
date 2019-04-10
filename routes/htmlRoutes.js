@@ -11,7 +11,7 @@ module.exports = app => {
   // app.get("/threads", isAuthenticated, (req, res) => res.render("threads"));
  
     // Load profile page
-    app.get("/threads", isAuthenticated, (req, res) => {
+    app.get("/threads", (req, res) => {
       db.User.findOne({
         where: {
           id: req.user.id
