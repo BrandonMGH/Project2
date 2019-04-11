@@ -56,30 +56,33 @@ module.exports = app => {
       console.log(dbPost);
       res.render("threads", {
         Thread: dbPost,
-        title: req.params.title
+        title: req.params.title,
+        TopicId: req.params.id
       });
     });
   });
 
   app.get("/posts/:threadId", (req, res) => {
     console.log(req.param)
-
-    // db.sequelize.query("SELECT * FROM Posts WHERE id=2").then(users => {console.log(users)})
-    db.Post.findAll({
-      where:
-      {
-        ThreadId: req.params.threadId,
-      
-      },
-      // include: [db.Thread]
-    }).then(dbPost => {
-      res.render("posts",{
-        Post: dbPost
-      });
+    db.Thread.findOne({
+      where: {id: req.params.threadId}
+    })
+    .then(dbthread => {
+      db.Post.findAll({ where:{ ThreadId: req.params.threadId}})
+      .then(dbPost => { 
+        res.render("posts",{ Post: dbPost, Thread: dbthread});
+      })
     });
-  });
-  
+})
 
+app.post("/posts/:threadId", (req, res) => {
+  console.log("WEOPJFAPOSJDAPOJSDPOASDPOASDJPOAPOJSD")
+    db.Post.create({body: req.body, TreadId: req.params.threadId, UserId: req.user.id}).then((dbPost) => {
+      res.json({Post: dbPost});
+    });
+})
   // Render 404 page for any unmatched routes
-  app.get("*", (req, res) => res.render("404"));
-};
+app.get("*", (req, res) => res.render("404"));
+
+}
+
