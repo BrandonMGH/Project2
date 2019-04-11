@@ -2,33 +2,9 @@
   <div class="col-8 offset-2">
     <div class="card mt-4">
       <div class="card-body">
-        <h5 class="card-title">Thread</h5>
-        <p>
-          <strong>User</strong>: </p>
-        <p>
-          <p>
-            <strong>Title</strong>: </p>
-          <p>
-            <strong>Thread Content:</strong> </p>
-          <hr>
-          <!-- Form for users to post replies -->
-          <form class="clearfix mb-4" id="create-post">
-            <div class="form-group">
-              <h4 class="alert alert-dark" role="alert" for="post-title">Thread Title:</h4>
-              <input type="text" id="post-title" class="form-control" aria-describedby="example-text"
-                placeholder="Post Title">
-            </div>
 
-            <div class="form-group">
-              
-              <h4 class="alert alert-dark" role="alert" for="post-body">Reply: </h4>
-              <textarea class="form-control" id="post-body" aria-describedby="post-body"
-                placeholder="post your reply here"></textarea>
-               
-            </div>
-            <button type="submit" class="btn btn-primary float-right">Submit</button>
-          </form>
-          <!-- Form for users to post replies -->
+        <h5 class="card-title">{{Thread.title}}</h5>
+       
           
 
 
@@ -39,10 +15,26 @@
              
               <p>{{this.body}}</p>
              
-              <button class="btn btn-danger float-right delete">ｘ</button>
+              {{!-- <button class="btn btn-danger float-right delete">ｘ</button> --}}
             </li>
             {{/each}}
           </ul>
+          <form class="clearfix mb-4" id="create-post">
+            {{!-- <div class="form-group">
+              <h4 class="alert alert-dark" role="alert" for="post-title">Thread Title:</h4>
+              <input type="text" id="post-title" class="form-control" aria-describedby="example-text"
+                placeholder="Post Title">
+            </div> --}}
+
+            <div class="form-group">
+              
+              <h4 class="alert alert-dark" role="alert" for="post-body">Reply: </h4>
+              <textarea class="form-control" id="post-body" aria-describedby="post-body"
+                placeholder="post your reply here"></textarea>
+               
+            </div>
+            <button type="submit" class="btn btn-primary float-right">Submit</button>
+          </form>
           <a href="/profile">← Back To Topics</a>
       </div>
     </div>
@@ -56,7 +48,7 @@
     e.preventDefault();
     $.ajax({
       method: "POST",
-      url: "/api/post",
+      url: "/posts/:threadID",
       data: {
         body: $("#post-body")
           .val()
@@ -68,18 +60,14 @@
     })
       .then(function (data) {
         console.log(data);
-        window.location.replace(data);
-      })
-      .catch(function (err) {
-        console.log(err);
-        alert(err.responseText);
+      
       });
 
     //getting all posts from database.post table
 
     $.ajax({
       method: "GET",
-      url: "/api/post",
+      url: "/posts/:threadID",
       data: {
         body: $("#post-body")
           .val()

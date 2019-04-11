@@ -1,22 +1,22 @@
 const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = app => {
- 
+
   app.get("/", (req, res) => res.render("signup"));
 
- 
+
   app.get("/login", (req, res) => res.render("login"));
 
-  
-    app.get("/threads", (req, res) => {  //** Delete this route?? */
-      db.User.findOne({
-        where: {
-          id: req.user.id
-        },
-      }).then(dbUser => {
-        res.render("threads", { user: dbUser });
-      });
+
+  app.get("/threads", (req, res) => {  //** Delete this route?? */
+    db.User.findOne({
+      where: {
+        id: req.user.id
+      },
+    }).then(dbUser => {
+      res.render("threads", { user: dbUser });
     });
+  });
 
   // Load profile page
   app.get("/profile", isAuthenticated, (req, res) => {
@@ -24,7 +24,7 @@ module.exports = app => {
       where: {
         id: req.user.id
       },
-    
+
     }).then(dbUser => {
       res.render("profile", { user: dbUser });
     });
@@ -43,32 +43,42 @@ module.exports = app => {
   // });
 
   app.get("/threads", (req, res) => {  // ** Delete this route?? ** 
-    res.render("threads")  
-  } )
+    res.render("threads")
+  })
 
   app.get("/posts", (req, res) => {
     res.render("posts")
   })
 
-  app.get("/threads/:id", (req, res) => {
+  app.get("/threads/:title/:id", (req, res) => {
     console.log(req.params)
     db.Thread.findAll({ where: { TopicId: req.params.id } }).then(dbPost => {
-      res.render("threads",{
-        Thread: dbPost
+      console.log(dbPost);
+      res.render("threads", {
+        Thread: dbPost,
+        title: req.params.title
       });
     });
   });
- 
+
   app.get("/posts/:threadId", (req, res) => {
     console.log(req.param)
-    
+
     // db.sequelize.query("SELECT * FROM Posts WHERE id=2").then(users => {console.log(users)})
-    db.Post.findAll({ where: { ThreadId: req.params.threadId } }).then(dbPost => {
-      res.render("posts", {
+    db.Post.findAll({
+      where:
+      {
+        ThreadId: req.params.threadId,
+      
+      },
+      // include: [db.Thread]
+    }).then(dbPost => {
+      res.render("posts",{
         Post: dbPost
       });
     });
   });
+  
 
   // Render 404 page for any unmatched routes
   app.get("*", (req, res) => res.render("404"));
