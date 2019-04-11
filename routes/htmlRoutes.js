@@ -11,16 +11,16 @@ module.exports = app => {
   // app.get("/threads", isAuthenticated, (req, res) => res.render("threads"));
  
     // Load profile page
-    app.get("/threads", (req, res) => {
-      db.User.findOne({
-        where: {
-          id: req.user.id
-        },
-        // include: [db.Example]
-      }).then(dbUser => {
-        res.render("threads", { user: dbUser });
-      });
-    });
+    // app.get("/threads", (req, res) => {
+    //   db.User.findOne({
+    //     where: {
+    //       id: req.user.id
+    //     },
+    //     // include: [db.Example]
+    //   }).then(dbUser => {
+    //     res.render("threads", { user: dbUser });
+    //   });
+    // });
 
   // Load profile page
   app.get("/profile", isAuthenticated, (req, res) => {
@@ -46,9 +46,9 @@ module.exports = app => {
   //   });
   // });
 
-  app.get("/threads", (req, res) => {
-    res.render("threads")
-  } )
+  // app.get("/threads", (req, res) => {
+  //   res.render("threads")
+  // } )
 
   app.get("/posts", (req, res) => {
     res.render("posts")

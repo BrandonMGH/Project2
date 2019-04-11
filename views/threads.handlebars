@@ -13,11 +13,11 @@
         <!-- END Button for Creating new Thread Below, when clicked the button will hide and the create topic will show-->
         <hr>
        <div id="create_topic">
-          <form class="clearfix mb-4" action="POST">
+          <form class="clearfix mb-4">
 
             <div class="form-group">
               <h4 class="alert alert-dark" role="alert" for="example-text">Thread Title:</h4>
-              <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
+              <input type="text" id="thread-title" class="form-control" aria-describedby="example-text"
                 placeholder="Thread Title">
             </div>
 
@@ -26,7 +26,7 @@
               <textarea class="form-control" id="example-description" aria-describedby="post-body"
                 placeholder="Post Body"></textarea>
             </div>
-            <button id="submit" class="btn btn-primary float-right">Submit</button>
+            <button type="submit" id="create-thread" class="btn btn-primary float-right">Submit</button>
           </form>
         </div>
         <h3 class="alert alert-primary" role="alert">Threads</h3>
@@ -42,4 +42,28 @@
     </div>
   </div>
 </div>
+
+<script>
+  $("#create-thread").on("click", function(e){
+    e.preventDefault();
+
+    const thread = {
+        title: $("#thread-title").val().trim()
+        //TopicId:
+        //UserId:
+    };
+
+    console.log(thread);
+// Signals back end to post data in database
+  $.ajax({
+       url: "/api/threads",
+       method: "POST",
+       data: thread
+  }).then(function(data) {
+      console.log(data);
+       window.location.reload("/");
+   });
+
+});
+</script>
 
