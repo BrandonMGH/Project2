@@ -8,19 +8,19 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = app => {
 
-  app.post("/api/add-thread", function(req, res) {
-    console.log(req.body);
-    db.Thread.create({
-      title: req.body.title
-    }).then((result) => {
-      res.send(result);
-    })
+  // app.post("/api/add-thread", function(req, res) {
+  //   console.log(req.body);
+  //   db.Thread.create({
+  //     title: req.body.title
+  //   }).then((result) => {
+  //     res.send(result);
+  //   })
 
-    .catch((error) => {
-      res.send(error);
-    })
+  //   .catch((error) => {
+  //     res.send(error);
+  //   })
     
-  })
+  // })
   // Get all examples
 
   app.get("/topic/:TopicId", (req, res) => {
