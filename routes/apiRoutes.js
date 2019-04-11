@@ -45,6 +45,17 @@ module.exports = app => {
       });
   });
 
+  app.post("/api/threads", (req, res) => {
+    console.log(req.body);
+    db.Thread.create({
+      title: req.body.title,
+      TopicId: req.body.TopicId
+    })
+      .then(() => {
+        res.reload("/");
+      })
+  });
+
   // // Route for logging user out
   // app.get("/logout", (req, res) => {
   //   req.logout();

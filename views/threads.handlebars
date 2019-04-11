@@ -5,19 +5,20 @@
       <div class="col-8 offset-2">
         <!-- Topic Header // will change dynamically #topic_header Just a place holder for now-->
         <div>
-          <h1 id="topic_header">Topic: {{title}}<img src="/images/github-logo_threads_page.png" width="150px" height="50px"></h1>
+          <h1 id="topic_header">Topic: {{title}}<img src="/images/github-logo_threads_page.png" width="150px"
+              height="50px"></h1>
           <hr>
         </div>
         <!-- START Button for Creating new Thread Below, when clicked the button will hide and the create_topic_but will show-->
         <button id="create_topic_but" class="btn btn-block btn-primary create_button">Create a New Thread Here</button>
         <!-- END Button for Creating new Thread Below, when clicked the button will hide and the create topic will show-->
         <hr>
-       <div id="create_topic">
+        <div id="create_topic">
           <form class="clearfix mb-4" action="POST">
 
             <div class="form-group">
               <h4 class="alert alert-dark" role="alert" for="example-text">Thread Title:</h4>
-              <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
+              <input type="text" data-topicid={{TopicId}} id="thread-title" class="form-control" aria-describedby="example-text"
                 placeholder="Thread Title">
             </div>
 
@@ -26,7 +27,7 @@
               <textarea class="form-control" id="example-description" aria-describedby="post-body"
                 placeholder="Post Body"></textarea>
             </div>
-            <button id="submit" class="btn btn-primary float-right">Submit</button>
+            <button id="create-thread" class="btn btn-primary float-right">Submit</button>
           </form>
         </div>
         <h3 class="alert alert-primary" role="alert">Threads</h3>
@@ -44,14 +45,15 @@
 </div>
 
 <script>
- $(".posts").on("click", function(e){
-   const postId = $(this).attr("data-id");
+
+  $(".posts").on("click", function (e) {
+    const postId = $(this).attr("data-id");
     console.log(parseInt(postId))
     e.preventDefault();
-    
-        window.location.href = `/posts/${postId}`;
-        
-   
 
-});
+    window.location.href = `/posts/${postId}`;
+
+
+
+  });
 </script>
