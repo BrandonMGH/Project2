@@ -12,12 +12,12 @@
         <button id="create_topic_but" class="btn btn-block btn-primary create_button">Create a New Thread Here</button>
         <!-- END Button for Creating new Thread Below, when clicked the button will hide and the create topic will show-->
         <hr>
-       <div id="create_topic">
-          <div class="clearfix mb-4" >
+        <div id="create_topic">
+          <form class="clearfix mb-4" action="POST">
 
             <div class="form-group">
-              <h4 class="alert alert-dark" role="alert" for="thread-title">Thread Title:</h4>
-              <input type="text" id="thread-title" class="form-control" aria-describedby="example-text"
+              <h4 class="alert alert-dark" role="alert" for="example-text">Thread Title:</h4>
+              <input type="text" data-topicid={{TopicId}} id="thread-title" class="form-control" aria-describedby="example-text"
                 placeholder="Thread Title">
             </div>
 
@@ -26,8 +26,8 @@
               <textarea class="form-control" id="thread-body" aria-describedby="post-body"
                 placeholder="Post Body"></textarea>
             </div>
-            <button  id="create-thread" class="btn btn-primary float-right">Submit</button>
-          </div>
+            <button id="create-thread" class="btn btn-primary float-right">Submit</button>
+          </form>
         </div>
         <h3 class="alert alert-primary" role="alert">Threads</h3>
         <ul id="example-list" class="list-group">
@@ -44,14 +44,15 @@
 </div>
 
 <script>
- $(".posts").on("click", function(e){
-   const postId = $(this).attr("data-id");
+
+  $(".posts").on("click", function (e) {
+    const postId = $(this).attr("data-id");
     console.log(parseInt(postId))
     e.preventDefault();
-    
-        window.location.href = `/posts/${postId}`;
-        
-   
 
-});
+    window.location.href = `/posts/${postId}`;
+
+
+
+  });
 </script>

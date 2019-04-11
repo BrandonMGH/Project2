@@ -57,7 +57,7 @@ module.exports = app => {
       res.render("threads", {
         Thread: dbPost,
         title: req.params.title,
-        
+        TopicId: req.params.id
       });
     });
   });
