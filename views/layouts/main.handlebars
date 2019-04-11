@@ -33,7 +33,10 @@
         <ul class="navbar-nav">
           {{#if user}}
           <li class="nav-item">
-            <a class="nav-link nav_text" href="/profile">PROFILE</a>
+            <a class="nav-link nav_text" href="/profile">TOPICS</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link nav_text" href="/logout">LOGOUT</a>
           </li>
           {{/if}}
         </ul>
@@ -46,14 +49,14 @@
             <a class="nav-link nav_text" href="/login">LOGIN</a>
           </li>
           {{/unless}}
-          {{#if user}}
+          {{!-- {{#if user}}
           <li class="nav-item">
             <a class="nav-link nav_text" href="/profile">TOPICS</a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav_text" href="/logout">LOGOUT</a>
           </li>
-          {{/if}}
+          {{/if}} --}}
         </ul>
       </div>
     </div>
@@ -86,7 +89,7 @@
   <script src="/js/signup.js"></script>
   <script src="/js/login.js"></script> 
   <script src="/js/threads.js"></script>
-  <script src="/js/example.js"></script>
+  {{!-- <script src="/js/example.js"></script> --}}
 
 </body>
 

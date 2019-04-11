@@ -13,21 +13,21 @@
         <!-- END Button for Creating new Thread Below, when clicked the button will hide and the create topic will show-->
         <hr>
        <div id="create_topic">
-          <form class="clearfix mb-4" action="POST">
+          <div class="clearfix mb-4" >
 
             <div class="form-group">
-              <h4 class="alert alert-dark" role="alert" for="example-text">Thread Title:</h4>
-              <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
+              <h4 class="alert alert-dark" role="alert" for="thread-title">Thread Title:</h4>
+              <input type="text" id="thread-title" class="form-control" aria-describedby="example-text"
                 placeholder="Thread Title">
             </div>
 
             <div class="form-group">
-              <h4 class="alert alert-dark" role="alert" for="example-description">Body of the Post: </h4>
-              <textarea class="form-control" id="example-description" aria-describedby="post-body"
+              <h4 class="alert alert-dark" role="alert" for="thread-body">Thread Content: </h4>
+              <textarea class="form-control" id="thread-body" aria-describedby="post-body"
                 placeholder="Post Body"></textarea>
             </div>
-            <button id="submit" class="btn btn-primary float-right">Submit</button>
-          </form>
+            <button  id="create-thread" class="btn btn-primary float-right">Submit</button>
+          </div>
         </div>
         <h3 class="alert alert-primary" role="alert">Threads</h3>
         <ul id="example-list" class="list-group">
