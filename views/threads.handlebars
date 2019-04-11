@@ -32,8 +32,8 @@
         <h3 class="alert alert-primary" role="alert">Threads</h3>
         <ul id="example-list" class="list-group">
           {{#each Thread}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.title}}</a>
+          <li data-id="{{this.id}}" class="list-group-item posts">
+            <a href="posts/{{this.id}}">{{this.title}}</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
@@ -43,3 +43,15 @@
   </div>
 </div>
 
+<script>
+ $(".posts").on("click", function(e){
+   const postId = $(this).attr("data-id");
+    console.log(parseInt(postId))
+    e.preventDefault();
+    
+        window.location.href = `/posts/${postId}`;
+        
+   
+
+});
+</script>

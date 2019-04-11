@@ -1,22 +1,18 @@
 const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = app => {
-  // Load signup page
+ 
   app.get("/", (req, res) => res.render("signup"));
 
-  // Load login page
+ 
   app.get("/login", (req, res) => res.render("login"));
 
-  // // Load threads page
-  // app.get("/threads", isAuthenticated, (req, res) => res.render("threads"));
- 
-    // Load profile page
-    app.get("/threads", (req, res) => {
+  
+    app.get("/threads", (req, res) => {  //** Delete this route?? */
       db.User.findOne({
         where: {
           id: req.user.id
         },
-        // include: [db.Example]
       }).then(dbUser => {
         res.render("threads", { user: dbUser });
       });
@@ -28,7 +24,7 @@ module.exports = app => {
       where: {
         id: req.user.id
       },
-      // include: [db.Example]
+    
     }).then(dbUser => {
       res.render("profile", { user: dbUser });
     });
@@ -46,8 +42,8 @@ module.exports = app => {
   //   });
   // });
 
-  app.get("/threads", (req, res) => {
-    res.render("threads")
+  app.get("/threads", (req, res) => {  // ** Delete this route?? ** 
+    res.render("threads")  
   } )
 
   app.get("/posts", (req, res) => {
@@ -62,13 +58,13 @@ module.exports = app => {
       });
     });
   });
-  // Load example page and pass in an example by id
-  app.get("/posts/:id", (req, res) => {
-    console.log(req.params)
+ 
+  app.get("/posts/:threadId", (req, res) => {
+    console.log(req.param)
     
     // db.sequelize.query("SELECT * FROM Posts WHERE id=2").then(users => {console.log(users)})
-    db.Post.findOne({ where: { id: req.params.id } }).then(dbPost => {
-      res.render("posts",{
+    db.Post.findAll({ where: { ThreadId: req.params.threadId } }).then(dbPost => {
+      res.render("posts", {
         Post: dbPost
       });
     });
