@@ -64,23 +64,25 @@ module.exports = app => {
 
   app.get("/posts/:threadId", (req, res) => {
     console.log(req.param)
-
-    // db.sequelize.query("SELECT * FROM Posts WHERE id=2").then(users => {console.log(users)})
-    db.Post.findAll({
-      where:
-      {
-        ThreadId: req.params.threadId,
-      
-      },
-      // include: [db.Thread]
-    }).then(dbPost => {
-      res.render("posts",{
-        Post: dbPost
-      });
+    db.Thread.findOne({
+      where: {id: req.params.threadId}
+    })
+    .then(dbthread => {
+      db.Post.findAll({ where:{ threadID: req.params.threadId}})
+      .then(dbPost => { 
+        res.render("posts",{ Post: dbPost, Thread: dbthread, threadID: req.params.threadId});
+      })
     });
-  });
-  
+})
 
+// app.post("/posts/:threadId", (req, res) => {
+//   console.log("WEOPJFAPOSJDAPOJSDPOASDPOASDJPOAPOJSD")
+//     db.Post.create({body: req.body, TreadId: req.params.threadId, UserId: req.user.id}).then((dbPost) => {
+//       res.json({Post: dbPost});
+//     });
+// })
   // Render 404 page for any unmatched routes
-  app.get("*", (req, res) => res.render("404"));
-};
+app.get("*", (req, res) => res.render("404"));
+
+}
+

@@ -19,6 +19,18 @@ module.exports = app => {
     console.log(req.body);
     db.Thread.create({
       title: req.body.title,
+      TopicId: req.body.TopicId
+    })
+      .then((dbThreads) => {
+        res.json(dbThreads);
+      })
+  });
+
+  app.post("/api/posts", (req, res) => {
+    console.log(req.body);
+    db.Post.create({
+      body: req.body.body,
+      threadID: req.body.threadID
     })
       .then((dbThreads) => {
         res.json(dbThreads);

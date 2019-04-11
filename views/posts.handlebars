@@ -3,39 +3,39 @@
     <div class="card mt-4">
       <div class="card-body">
 
-        <h5 class="card-title">{{Thread.title}}</h5>
-       
-          
+        <h5 data-ThreadID={{threadID}} id="thread-title" class="card-title">{{Thread.title}}</h5>
 
 
-          <h3 class="alert alert-primary" role="alert">Posts</h3>
-          <ul id="post-list" class="list-group">
-            {{#each Post}}
-            <li data-id="{{this.id}}" class="list-group-item">
-             
-              <p>{{this.body}}</p>
-             
-              {{!-- <button class="btn btn-danger float-right delete">ｘ</button> --}}
-            </li>
-            {{/each}}
-          </ul>
-          <form class="clearfix mb-4" id="create-post">
-            {{!-- <div class="form-group">
+
+
+        <h3 class="alert alert-primary" role="alert">Posts</h3>
+        <ul id="post-list" class="list-group">
+          {{#each Post}}
+          <li data-id="{{this.id}}" class="list-group-item">
+
+            <p>{{this.body}}</p>
+
+            {{!-- <button class="btn btn-danger float-right delete">ｘ</button> --}}
+          </li>
+          {{/each}}
+        </ul>
+        <form class="clearfix mb-4" id="create-post">
+          {{!-- <div class="form-group">
               <h4 class="alert alert-dark" role="alert" for="post-title">Thread Title:</h4>
               <input type="text" id="post-title" class="form-control" aria-describedby="example-text"
                 placeholder="Post Title">
             </div> --}}
 
-            <div class="form-group">
-              
-              <h4 class="alert alert-dark" role="alert" for="post-body">Reply: </h4>
-              <textarea class="form-control" id="post-body" aria-describedby="post-body"
-                placeholder="post your reply here"></textarea>
-               
-            </div>
-            <button type="submit" class="btn btn-primary float-right">Submit</button>
-          </form>
-          <a href="/profile">← Back To Topics</a>
+          <div class="form-group">
+
+            <h4 class="alert alert-dark" role="alert" for="post-body">Reply: </h4>
+            <textarea class="form-control" id="post-body" aria-describedby="post-body"
+              placeholder="post your reply here"></textarea>
+
+          </div>
+          <button type="submit" class="btn btn-primary float-right">Submit</button>
+        </form>
+        <a href="/profile">← Back To Topics</a>
       </div>
     </div>
   </div>
@@ -44,50 +44,38 @@
 <script>
 
 
-  $("#create-post").on("submit", function (e) {
+  $("#asdasd").on("submit", function (e) {
     e.preventDefault();
+     const threadID = $(this).attr("data-ThreadID");
+     console.log("asdasdasd");
     $.ajax({
       method: "POST",
-      url: "/posts/:threadID",
-      data: {
-        body: $("#post-body")
-          .val()
-          .trim(),
-        title: $("#post-title")
-          .val()
-          .trim()
-      }
+      url: "/api/posts"
+      body: "asd"
     })
-      .then(function (data) {
-        console.log(data);
-      
-      });
+    .then(function (data) {console.log(data)})
+  })
 
-    //getting all posts from database.post table
-
+  $("#create-post").on("click", function (event) {
+    event.preventDefault();
     $.ajax({
-      method: "GET",
-      url: "/posts/:threadID",
-      data: {
-        body: $("#post-body")
-          .val()
-          .trim(),
-        title: $("#post-title")
-          .val()
-          .trim()
-      }
+        method: "POST",
+        url: "/api/posts",
+        data: {
+            title: $("#post-body").val().trim(),
+            threadID: $("#thread-title").data("ThreadID")
+        }
     })
-      .then(function (data) {
-        console.log(data);
-        window.location.replace(data);
-      })
-      .catch(function (err) {
-        console.log(err);
-        alert(err.responseText);
-      });
-  });
+        .then(function (data) {
+            console.log(data);
+            window.location.replace(data);
+        })
+        .catch(function (err) {
+            console.log(err);
+            alert(err.responseText);
+        });
+});
+  
 
 
-
-//create new posts
 </script>
