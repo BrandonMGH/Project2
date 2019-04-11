@@ -15,6 +15,16 @@ module.exports = app => {
     })
   }); 
 
+  app.post("/api/threads", (req, res) => {
+    console.log(req.body);
+    db.Thread.create({
+      title: req.body.title,
+    })
+      .then((dbThreads) => {
+        res.json(dbThreads);
+      })
+  });
+
 
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -43,6 +53,17 @@ module.exports = app => {
       .catch(err => {
         res.status(422).json(err.errors[0].message);
       });
+  });
+
+  app.post("/api/threads", (req, res) => {
+    console.log(req.body);
+    db.Thread.create({
+      title: req.body.title,
+      TopicId: req.body.TopicId
+    })
+      .then(() => {
+        res.reload("/");
+      })
   });
 
   // // Route for logging user out
