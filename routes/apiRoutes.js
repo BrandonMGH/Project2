@@ -15,6 +15,16 @@ module.exports = app => {
     })
   }); 
 
+  app.post("/api/threads", (req, res) => {
+    console.log(req.body);
+    db.Thread.create({
+      title: req.body.title,
+    })
+      .then((dbThreads) => {
+        res.json(dbThreads);
+      })
+  });
+
 
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
