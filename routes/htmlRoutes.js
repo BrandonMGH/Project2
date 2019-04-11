@@ -68,19 +68,19 @@ module.exports = app => {
       where: {id: req.params.threadId}
     })
     .then(dbthread => {
-      db.Post.findAll({ where:{ ThreadId: req.params.threadId}})
+      db.Post.findAll({ where:{ threadID: req.params.threadId}})
       .then(dbPost => { 
-        res.render("posts",{ Post: dbPost, Thread: dbthread});
+        res.render("posts",{ Post: dbPost, Thread: dbthread, threadID: req.params.threadId});
       })
     });
 })
 
-app.post("/posts/:threadId", (req, res) => {
-  console.log("WEOPJFAPOSJDAPOJSDPOASDPOASDJPOAPOJSD")
-    db.Post.create({body: req.body, TreadId: req.params.threadId, UserId: req.user.id}).then((dbPost) => {
-      res.json({Post: dbPost});
-    });
-})
+// app.post("/posts/:threadId", (req, res) => {
+//   console.log("WEOPJFAPOSJDAPOJSDPOASDPOASDJPOAPOJSD")
+//     db.Post.create({body: req.body, TreadId: req.params.threadId, UserId: req.user.id}).then((dbPost) => {
+//       res.json({Post: dbPost});
+//     });
+// })
   // Render 404 page for any unmatched routes
 app.get("*", (req, res) => res.render("404"));
 

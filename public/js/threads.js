@@ -15,7 +15,7 @@ $("#create-thread").on("click", function (event) {
     })
         .then(function (data) {
             console.log(data);
-            window.location.replace(data);
+            location.reload(); 
         })
         .catch(function (err) {
             console.log(err);

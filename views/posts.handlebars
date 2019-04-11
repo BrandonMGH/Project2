@@ -3,7 +3,7 @@
     <div class="card mt-4">
       <div class="card-body">
 
-        <h5 data-ThreadID={{Thread.id}} class="card-title">{{Thread.title}}</h5>
+        <h5 data-ThreadID={{threadID}} id="thread-title" class="card-title">{{Thread.title}}</h5>
 
 
 
@@ -44,17 +44,37 @@
 <script>
 
 
-  $("#create-post").on("submit", function (e) {
+  $("#asdasd").on("submit", function (e) {
     e.preventDefault();
      const threadID = $(this).attr("data-ThreadID");
      console.log("asdasdasd");
     $.ajax({
       method: "POST",
-      url: "/posts/" + threadID,
+      url: "/api/posts"
       body: "asd"
     })
     .then(function (data) {console.log(data)})
   })
+
+  $("#create-post").on("click", function (event) {
+    event.preventDefault();
+    $.ajax({
+        method: "POST",
+        url: "/api/posts",
+        data: {
+            title: $("#post-body").val().trim(),
+            threadID: $("#thread-title").data("ThreadID")
+        }
+    })
+        .then(function (data) {
+            console.log(data);
+            window.location.replace(data);
+        })
+        .catch(function (err) {
+            console.log(err);
+            alert(err.responseText);
+        });
+});
   
 
 
