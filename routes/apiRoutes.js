@@ -30,7 +30,7 @@ module.exports = app => {
     console.log(req.body);
     db.Post.create({
       body: req.body.body,
-      threadID: req.body.threadID
+      ThreadId: req.body.ThreadId
     })
       .then((dbThreads) => {
         res.json(dbThreads);
