@@ -30,18 +30,6 @@ module.exports = app => {
     });
   });
 
-  // // Load threads page
-  // app.get("/threads", isAuthenticated, (req, res) => {
-  //   db.User.findOne({
-  //     where: {
-  //       id: req.user.id
-  //     },
-  //     include: [db.Example]
-  //   }).then(dbUser => {
-  //     res.render("threads", { user: dbUser });
-  //   });
-  // });
-
   app.get("/threads", (req, res) => {  // ** Delete this route?? ** 
     res.render("threads")
   })
@@ -52,10 +40,10 @@ module.exports = app => {
 
   app.get("/threads/:title/:id", (req, res) => {
     console.log(req.params)
-    db.Thread.findAll({ 
-      where: { 
-        TopicId: req.params.id 
-      } 
+    db.Thread.findAll({
+      where: {
+        TopicId: req.params.id
+      }
     }).then(dbPost => {
       console.log(dbPost);
       res.render("threads", {
@@ -72,29 +60,23 @@ module.exports = app => {
       where: {
         id: req.params.threadId
       }
-    })
-    .then(dbthread => {
-      db.Post.findAll({ 
-        where:{
+    }).then(dbthread => {
+      db.Post.findAll({
+        where: {
           threadId: req.params.threadId
         }
-      }).then(dbPost => { 
-        res.render("posts",{ 
-          Post: dbPost, 
-          Thread: dbthread, 
-          threadId: req.params.threadId});
+      }).then(dbPost => {
+        res.render("posts", {
+          Post: dbPost,
+          Thread: dbthread,
+          threadId: req.params.threadId
+        });
       })
     });
-})
+  })
 
-// app.post("/posts/:threadId", (req, res) => {
-//   console.log("WEOPJFAPOSJDAPOJSDPOASDPOASDJPOAPOJSD")
-//     db.Post.create({body: req.body, TreadId: req.params.threadId, UserId: req.user.id}).then((dbPost) => {
-//       res.json({Post: dbPost});
-//     });
-// })
   // Render 404 page for any unmatched routes
-app.get("*", (req, res) => res.render("404"));
+  app.get("*", (req, res) => res.render("404"));
 
 }
 
