@@ -52,7 +52,11 @@ module.exports = app => {
 
   app.get("/threads/:title/:id", (req, res) => {
     console.log(req.params)
-    db.Thread.findAll({ where: { TopicId: req.params.id } }).then(dbPost => {
+    db.Thread.findAll({ 
+      where: { 
+        TopicId: req.params.id 
+      } 
+    }).then(dbPost => {
       console.log(dbPost);
       res.render("threads", {
         Thread: dbPost,
@@ -65,12 +69,20 @@ module.exports = app => {
   app.get("/posts/:threadId", (req, res) => {
     console.log(req.param)
     db.Thread.findOne({
-      where: {id: req.params.threadId}
+      where: {
+        id: req.params.threadId
+      }
     })
     .then(dbthread => {
-      db.Post.findAll({ where:{ threadID: req.params.threadId}})
-      .then(dbPost => { 
-        res.render("posts",{ Post: dbPost, Thread: dbthread, threadID: req.params.threadId});
+      db.Post.findAll({ 
+        where:{
+          threadId: req.params.threadId
+        }
+      }).then(dbPost => { 
+        res.render("posts",{ 
+          Post: dbPost, 
+          Thread: dbthread, 
+          threadId: req.params.threadId});
       })
     });
 })

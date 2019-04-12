@@ -3,7 +3,7 @@
     <div class="card mt-4">
       <div class="card-body">
 
-        <h5 data-ThreadID={{threadID}} id="thread-title" class="card-title">{{Thread.title}}</h5>
+        <h5 id="thread-title" class="card-title">{{Thread.title}}</h5>
 
 
 
@@ -19,7 +19,7 @@
           </li>
           {{/each}}
         </ul>
-        <form class="clearfix mb-4" id="create-post">
+        <form class="clearfix mb-4">
           {{!-- <div class="form-group">
               <h4 class="alert alert-dark" role="alert" for="post-title">Thread Title:</h4>
               <input type="text" id="post-title" class="form-control" aria-describedby="example-text"
@@ -29,11 +29,11 @@
           <div class="form-group">
 
             <h4 class="alert alert-dark" role="alert" for="post-body">Reply: </h4>
-            <textarea class="form-control" id="post-body" aria-describedby="post-body"
+            <textarea class="form-control" id="post-body" data-threadid={{threadId}} aria-describedby="post-body"
               placeholder="post your reply here"></textarea>
 
           </div>
-          <button type="submit" class="btn btn-primary float-right">Submit</button>
+          <button type="submit" id="create-post" class="btn btn-primary float-right">Submit</button>
         </form>
         <a href="/profile">← Back To Topics</a>
       </div>
