@@ -60,3 +60,8 @@ label {
 #create_topic {
 display: none;
 }
+
+.topic-image {
+  margin-left: 15px;
+  margin-bottom: 7px;
+}
